@@ -12,7 +12,7 @@ const technicalEvents = [
         name: "Paper Presentation",
         description: "Present your research on emerging technologies. Share your insights and innovations with an expert panel.\n\nTheme: Artificial Intelligence, Data Science",
         icon: "file-text",
-        coordinator: { name: "Student Coordinator", phone: "+91 XXXXX XXXXX" },
+        coordinator: { name: "Aswin A", phone: "+91 78458 29455" },
         rules: [
             "Team of 2 members",
             "Presentation duration: 8 minutes + 2 minutes Q&A",
@@ -24,7 +24,7 @@ const technicalEvents = [
         name: "Debugging",
         description: "Find and fix bugs in the given code snippets. Test your debugging skills under pressure with tricky code challenges.",
         icon: "bug",
-        coordinator: { name: "Student Coordinator", phone: "+91 XXXXX XXXXX" },
+        coordinator: { name: "Afzar", phone: "+91 75300 77048" },
         rules: [
             "Individual participation",
             "Time limit: 30 minutes",
@@ -36,7 +36,7 @@ const technicalEvents = [
         name: "Technical Quiz",
         description: "Test your knowledge on technology, programming, AI, and current trends in the tech world.",
         icon: "brain",
-        coordinator: { name: "Student Coordinator", phone: "+91 XXXXX XXXXX" },
+        coordinator: { name: "Sreejith", phone: "+91 77086 56064" },
         rules: [
             "1.Participants must arrive on time and register before the event starts.",
             "2.Teams will consist of 2 members each.",
@@ -52,7 +52,7 @@ const technicalEvents = [
         name: "Prompt",
         description: "Craft the perfect prompts to get AI to generate desired outputs. Master the art of prompt engineering.",
         icon: "sparkles",
-        coordinator: { name: "Student Coordinator", phone: "+91 XXXXX XXXXX" },
+        coordinator: { name: "Jothison", phone: "+91 94894 28051" },
         rules: [
             "Individual participation",
             "AI tool will be provided",
@@ -64,10 +64,10 @@ const technicalEvents = [
 
 const nonTechnicalEvents = [
     {
-        name: "Spotify",
+        name: "Aginson",
         description: "Guess the song from short clips and prove your musical knowledge. A fun and energetic challenge for music lovers.",
         icon: "music",
-        coordinator: { name: "Student Coordinator", phone: "+91 XXXXX XXXXX" },
+        coordinator: { name: "Student Coordinator", phone: "+91 73958 87298" },
         rules: [
             "Team of 2 members",
             "Multiple rounds with increasing difficulty",
@@ -79,7 +79,7 @@ const nonTechnicalEvents = [
         name: "Connection Puzzle",
         description: "Find the hidden connections between seemingly unrelated clues. A brain-teasing puzzle that tests your lateral thinking.",
         icon: "puzzle",
-        coordinator: { name: "Student Coordinator", phone: "+91 XXXXX XXXXX" },
+        coordinator: { name: "Godson Lalu", phone: "+91 63691 20813" },
         rules: [
             "Team of 2 members",
             "Multiple rounds",
@@ -91,7 +91,7 @@ const nonTechnicalEvents = [
         name: "Who Am I",
         description: "Guess the personality from clues given one at a time. The fewer clues you need, the more points you score!",
         icon: "user-search",
-        coordinator: { name: "Student Coordinator", phone: "+91 XXXXX XXXXX" },
+        coordinator: { name: "Aswin Raj", phone: "+91 88075 11051" },
         rules: [
             "Individual participation",
             "Clues revealed one by one",
