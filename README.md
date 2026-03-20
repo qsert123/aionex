@@ -1,7 +1,5 @@
 # AIONEX 2K26
 
-![AIONEX Hero](assets/hero1.jpg) <!-- Optional: You can replace this with an actual screenshot of your hero section -->
-
 Welcome to the official website repository for **AIONEX 2K26**, the National Level Technical Symposium organized by the Department of Artificial Intelligence & Data Science.
 
 ## 🌟 Overview
