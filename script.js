@@ -14,10 +14,13 @@ const technicalEvents = [
         icon: "file-text",
         coordinator: { name: "Aswin A", phone: "+91 78458 29455" },
         rules: [
-            "Team of 2 members",
-            "Presentation duration: 8 minutes + 2 minutes Q&A",
-            "Topics must be related to AI or Data Science",
-            "PPT must be submitted before the event"
+            "<span class='rule-key'>Team:</span> 1–2 participants per team",
+            "<span class='rule-key'>Topic:</span> Must be related to technology or emerging tech",
+            "<span class='rule-key'>Presentation:</span> 5 minutes per team",
+            "<span class='rule-key'>Q&A:</span> 1 minute with judges",
+            "<span class='rule-key'>Submission:</span> Bring PPT in a pen drive or submit PDF during registration",
+            "<span class='rule-key'>Offline:</span> Ensure presentation works without internet",
+            "<span class='rule-key'>File Name:</span> Use participant/team leader name for easy identification"
         ]
     },
     {
@@ -26,53 +29,66 @@ const technicalEvents = [
         icon: "bug",
         coordinator: { name: "Afzar", phone: "+91 75300 77048" },
         rules: [
-            "Individual participation",
-            "Time limit: 30 minutes",
-            "Languages: C, Python, or Java",
-            "No external resources allowed"
+            "Do not use mobile phones inside the event hall.",
+            "This event is divided into 2 Rounds.",
+            "<span class='rule-key'>Round 1:</span> 30 minutes — Pen and paper based.",
+            "Only winning participants from Round 1 proceed to Round 2.",
+            "<span class='rule-key'>Round 2:</span> 30 minutes — Software based.",
+            "The decision of the judges is final."
         ]
     },
     {
-        name: "Prompt",
+        name: "Prism AI",
         description: "Craft the perfect prompts to get AI to generate desired outputs. Master the art of prompt engineering.",
         icon: "sparkles",
         coordinator: { name: "Jothison", phone: "+91 94894 28051" },
         rules: [
-            "Individual participation",
-            "AI tool will be provided",
-            "Judged on creativity and accuracy of output",
-            "Time limit: 20 minutes per challenge"
+            "<span class='rule-key'>Round 1 — Logo Creation:</span>",
+            "Team: Individual or team of 2",
+            "Task: Write a prompt and generate a logo using AI (e.g., ChatGPT)",
+            "Topic: Given by organizers",
+            "Time: 8 minutes",
+            "Selection: Top scorers qualify for Round 2",
+            "<span class='rule-key'>Round 2 — Scenery Prompt:</span>",
+            "Team: Same participants continue",
+            "Task: Create a prompt using given keywords/characters and generate an image",
+            "Time: 10 minutes",
+            "Evaluation: Based on creativity and accuracy"
         ]
-    }
-];
-
-const nonTechnicalEvents = [
+    },
     {
         name: "Technical Quiz",
         description: "Test your knowledge on technology, programming, AI, and current trends in the tech world.",
         icon: "brain",
         coordinator: { name: "Sreejith", phone: "+91 77086 56064" },
         rules: [
-            "1.Participants must arrive on time and register before the event starts.",
-            "2.Teams will consist of 2 members each.",
-            "3.The quiz will be conducted in two rounds:",
-            "<span style='font-weight: bold;'>Round 1:</span> Technical questions related to Engineering",
-            "<span style='font-weight: bold;'>Round 2:</span> Rapid fire",
-            "4.30 seconds will be given for each question.",
-            "5.Top scoring students qualify for the next round.",
-            "6.No use of mobile phones or any external help during the quiz."
+            "Participants must arrive on time and register before the event starts.",
+            "Teams will consist of 2 members each.",
+            "The quiz will be conducted in two rounds:",
+            "<span class='rule-key'>Round 1:</span> Technical questions related to Engineering",
+            "<span class='rule-key'>Round 2:</span> Rapid fire",
+            "30 seconds will be given for each question.",
+            "Top scoring students qualify for the next round.",
+            "No use of mobile phones or any external help during the quiz."
         ]
     },
+];
+
+const nonTechnicalEvents = [
     {
         name: "Spotify",
         description: "Guess the song from short clips and prove your musical knowledge. A fun and energetic challenge for music lovers.",
         icon: "music",
         coordinator: { name: "Aginson", phone: "+91 73958 87298" },
         rules: [
-            "Team of 2 members",
-            "Multiple rounds with increasing difficulty",
-            "No using phones or Shazam",
-            "Covers all genres and languages"
+            "Team: 2 members per team",
+            "<span class='rule-key'>Round 1:</span> 20 questions — Top 10 teams qualify",
+            "<span class='rule-key'>Round 2:</span> 15 questions — Top 2 teams qualify",
+            "Time: 30 seconds per question",
+            "Final Task: Burst balloon → read proverb → sing a related song",
+            "<span class='rule-key'>Scoring:</span> Correct song → +1 mark; Wrong/No song → chance passes to next team",
+            "<span class='rule-key'>Negative Marking:</span> Wrong song / no answer / cheating → −1 mark",
+            "No mobile phones or external help allowed"
         ]
     },
     {
@@ -81,10 +97,18 @@ const nonTechnicalEvents = [
         icon: "puzzle",
         coordinator: { name: "Godson Lalu", phone: "+91 63691 20813" },
         rules: [
-            "Team of 2 members",
-            "Multiple rounds",
-            "Find the common link between given items",
-            "Time-based scoring"
+            "<span class='rule-key'>Round 1 — Connections:</span>",
+            "Team: 2 members per team",
+            "Questions: 10 questions displayed",
+            "Answering: Raise hand; first recognized team answers",
+            "Rule: No shouting answers",
+            "Scoring: +10 (correct), −5 (wrong)",
+            "Selection: Top teams qualify for next round",
+            "<span class='rule-key'>Round 2 — Puzzles:</span>",
+            "Task: Solve puzzle questions displayed on screen",
+            "Answering: Raise hand; first recognized team answers",
+            "Rule: No shouting answers",
+            "Scoring: +10 (correct)"
         ]
     },
     {
@@ -95,7 +119,7 @@ const nonTechnicalEvents = [
         rules: [
             "Individual participation",
             "Clues revealed one by one",
-            "Points decrease with each clue",
+            "Points decrease with each clue used",
             "Covers tech leaders, scientists, and pop culture"
         ]
     }
@@ -182,28 +206,55 @@ const facultyCategories = {
 
 // ─────────────────────────────────────────
 // RENDER: Event Cards
-// ───────────────────────────────────────  ──
+// ─────────────────────────────────────────
+
+const RULES_PREVIEW_COUNT = 3; // How many rules to show before "Read More"
 
 function renderEventCard(event, type) {
     const accentClass = type === 'tech' ? 'tech' : 'non-tech';
-    const accentColor = type === 'tech' ? '#ff6a00' : '#ff9500';
+    const accentColor = type === 'tech' ? '#c084fc' : '#e879f9';
+    const accentColorRgb = type === 'tech' ? '192,132,252' : '232,121,249';
 
-    const rulesHtml = event.rules && event.rules.length > 0
-        ? `<div class="border-t border-white/5 pt-4 mt-4">
+    let rulesHtml = '';
+    if (event.rules && event.rules.length > 0) {
+        const preview = event.rules.slice(0, RULES_PREVIEW_COUNT);
+        const rest = event.rules.slice(RULES_PREVIEW_COUNT);
+        const hasMore = rest.length > 0;
+
+        rulesHtml = `
+            <div class="rules-section border-t border-white/5 pt-4 mt-4">
                 <div class="flex items-center gap-2 mb-3">
                     <i data-lucide="scroll-text" style="width:14px;height:14px;color:${accentColor};opacity:0.7"></i>
                     <span class="text-xs font-semibold uppercase tracking-wider" style="color:${accentColor}">Rules</span>
                 </div>
-                <ul class="space-y-1.5">
-                    ${event.rules.map(rule => `
-                        <li class="flex items-start gap-2 text-xs text-white/35 leading-relaxed">
-                            <span style="color:${accentColor};opacity:0.5;margin-top:2px">•</span>
+                <ul class="rules-list space-y-1.5">
+                    ${preview.map(rule => `
+                        <li class="flex items-start gap-2 text-xs text-white/40 leading-relaxed">
+                            <span style="color:${accentColor};opacity:0.5;margin-top:2px;flex-shrink:0">•</span>
                             <span>${rule}</span>
                         </li>
                     `).join('')}
+                    ${hasMore ? `
+                    <li class="rules-extra hidden">
+                        <ul class="space-y-1.5">
+                            ${rest.map(rule => `
+                                <li class="flex items-start gap-2 text-xs text-white/40 leading-relaxed">
+                                    <span style="color:${accentColor};opacity:0.5;margin-top:2px;flex-shrink:0">•</span>
+                                    <span>${rule}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </li>
+                    <li>
+                        <button class="read-more-btn mt-2 text-xs font-semibold flex items-center gap-1 transition-all duration-200" style="color:${accentColor}" onclick="toggleRules(this)" data-accent="${accentColor}" data-accent-rgb="${accentColorRgb}">
+                            <span class="btn-text">Read More</span>
+                            <i data-lucide="chevron-down" style="width:12px;height:12px" class="btn-icon transition-transform duration-200"></i>
+                        </button>
+                    </li>
+                    ` : ''}
                 </ul>
-           </div>`
-        : '';
+            </div>`;
+    }
 
     return `
         <div class="event-card ${type === 'non-tech' ? 'non-tech' : ''}" data-animate="event">
@@ -225,6 +276,26 @@ function renderEventCard(event, type) {
             ${rulesHtml}
         </div>
     `;
+}
+
+function toggleRules(btn) {
+    const rulesSection = btn.closest('.rules-section');
+    const extraLi = rulesSection.querySelector('.rules-extra');
+    const btnText = btn.querySelector('.btn-text');
+    const btnIcon = btn.querySelector('.btn-icon');
+    const isOpen = !extraLi.classList.contains('hidden');
+
+    if (isOpen) {
+        extraLi.classList.add('hidden');
+        btnText.textContent = 'Read More';
+        btnIcon.style.transform = 'rotate(0deg)';
+    } else {
+        extraLi.classList.remove('hidden');
+        btnText.textContent = 'Show Less';
+        btnIcon.style.transform = 'rotate(180deg)';
+    }
+    // Re-init icons in the newly revealed content
+    lucide.createIcons();
 }
 
 function renderEvents() {
@@ -254,7 +325,7 @@ function renderFacultyCard(faculty, featured = false) {
         <div class="${cardClass}" data-animate="faculty">
             <img src="${faculty.image}" alt="${faculty.name}" class="${imgClass}" loading="lazy">
             <h3 class="font-space text-lg font-semibold text-white mb-1">${faculty.name}</h3>
-            <p class="text-xs text-neon-purple/80 font-medium tracking-wide uppercase mb-2">${faculty.designation}</p>
+            <p class="text-xs font-medium tracking-wide uppercase mb-2" style="color:#c084fc">${faculty.designation}</p>
             ${roleHtml}
         </div>
     `;
@@ -294,7 +365,6 @@ function initParticles() {
 
     const ctx = canvas.getContext('2d');
     let particles = [];
-    let animId;
 
     function resize() {
         canvas.width = window.innerWidth;
@@ -328,7 +398,7 @@ function initParticles() {
 
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 106, 0, ${p.opacity})`;
+            ctx.fillStyle = `rgba(192, 132, 252, ${p.opacity})`;
             ctx.fill();
 
             // Draw connections
@@ -341,14 +411,14 @@ function initParticles() {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(255, 106, 0, ${0.04 * (1 - dist / 120)})`;
+                    ctx.strokeStyle = `rgba(192, 132, 252, ${0.04 * (1 - dist / 120)})`;
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
             }
         });
 
-        animId = requestAnimationFrame(drawParticles);
+        requestAnimationFrame(drawParticles);
     }
 
     resize();

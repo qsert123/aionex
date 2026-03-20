@@ -28,16 +28,16 @@
                     },
                     colors: {
                         dark: {
-                            900: '#080400',
-                            800: '#0d0800',
-                            700: '#1a0e00',
-                            600: '#241400',
+                            900: '#060010',
+                            800: '#0b0018',
+                            700: '#130025',
+                            600: '#1a0033',
                         },
                         neon: {
-                            blue: '#ff6a00',
-                            purple: '#ff9500',
-                            cyan: '#ffcc00',
-                            pink: '#ff4500',
+                            blue:   '#c084fc',
+                            purple: '#e879f9',
+                            cyan:   '#f0abfc',
+                            pink:   '#a855f7',
                         }
                     }
                 }
@@ -56,7 +56,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-dark-900 text-white font-inter antialiased overflow-x-hidden" style="background-color:#080400">
+<body class="bg-dark-900 text-white font-inter antialiased overflow-x-hidden" style="background-color:#060010">
 
     <!-- ===================== NAVBAR ===================== -->
     <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 overflow-x-hidden">
@@ -65,7 +65,7 @@
                 <!-- Logo -->
                 <a href="#home" class="flex items-center gap-3 group min-w-0 overflow-hidden">
                     <div
-                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-neon-blue to-neon-purple flex items-center justify-center font-orbitron font-bold text-sm tracking-wider group-hover:shadow-lg group-hover:shadow-neon-blue/30 transition-all duration-300 text-dark-900">
+                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-neon-pink to-neon-purple flex items-center justify-center font-orbitron font-bold text-sm tracking-wider group-hover:shadow-lg group-hover:shadow-neon-pink/30 transition-all duration-300 text-white">
                         AX
                     </div>
                     <span class="font-orbitron text-lg font-semibold tracking-wider hidden sm:block">AIONEX</span>
@@ -105,7 +105,7 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden mobile-menu-closed overflow-hidden transition-all duration-500"
-            style="background:rgba(8,4,0,0.85);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(255,106,0,0.08);">
+            style="background:rgba(6,0,16,0.92);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(192,132,252,0.08);">
             <div class="px-6 pb-6 pt-2 border-t border-white/5">
                 <div class="flex flex-col gap-4">
                     <a href="#home"
@@ -128,25 +128,35 @@
     <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
         <!-- Background Effects -->
         <div class="hero-bg-gradient absolute inset-0"></div>
-        <div class="hero-grid absolute inset-0 opacity-[0.03]"></div>
+        <div class="hero-grid absolute inset-0 opacity-[0.04]"></div>
         <canvas id="particles-canvas" class="absolute inset-0 z-0"></canvas>
+
+        <!-- Glow orbs -->
+        <div class="absolute top-1/4 left-1/4 w-72 h-72 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(126,34,206,0.18) 0%,transparent 70%);filter:blur(40px)"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(232,121,249,0.12) 0%,transparent 70%);filter:blur(60px)"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-24">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Left: Content -->
                 <div class="hero-content">
+                    <!-- Badge -->
                     <div
-                        class="hero-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon-blue/20 bg-neon-blue/5 mb-8 opacity-0">
-                        <span class="w-2 h-2 rounded-full bg-neon-cyan animate-pulse"></span>
+                        class="hero-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon-blue/20 bg-neon-blue/5 mb-6 opacity-0">
+                        <span class="w-2 h-2 rounded-full bg-neon-purple animate-pulse"></span>
                         <span class="text-xs font-medium text-neon-cyan tracking-widest uppercase">A National Level
                             Symposium</span>
                     </div>
+
+                    <!-- Department tag -->
+                    <p class="text-white/30 text-xs tracking-widest uppercase mb-3 font-medium" style="letter-spacing:0.15em">
+                        Department of AI &amp; Data Science
+                    </p>
 
                     <h1
                         class="hero-title font-orbitron text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.95] tracking-tighter mb-6 opacity-0">
                         <span class="block text-gradient">AIONEX</span>
                         <span
-                            class="block text-white/90 text-3xl sm:text-4xl lg:text-5xl font-semibold mt-2 tracking-tight">2K26</span>
+                            class="block text-white/80 text-3xl sm:text-4xl lg:text-5xl font-semibold mt-2 tracking-tight">2K26</span>
                     </h1>
 
                     <p
@@ -154,6 +164,7 @@
                         Where Innovation Meets Intelligence
                     </p>
 
+                    <!-- Info row -->
                     <div
                         class="hero-details flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-white/40 mb-10 opacity-0">
                         <div class="flex items-center gap-2">
@@ -163,7 +174,25 @@
                         <span class="hidden sm:block text-white/10">|</span>
                         <div class="flex items-center gap-2">
                             <i data-lucide="map-pin" class="w-4 h-4 text-neon-purple"></i>
-                            <span>Mar Ephraem College of Engineering and Technology</span>
+                            <span>Mar Ephraem College of Engineering &amp; Technology</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats row -->
+                    <div class="flex items-center gap-6 mb-10" style="opacity:0.7">
+                        <div class="hero-stat text-center">
+                            <p class="font-orbitron text-xl font-bold text-gradient">7+</p>
+                            <p class="text-[10px] text-white/40 uppercase tracking-wider mt-1">Events</p>
+                        </div>
+                        <div class="w-px h-10 bg-white/10"></div>
+                        <div class="hero-stat text-center">
+                            <p class="font-orbitron text-xl font-bold text-gradient">₹150</p>
+                            <p class="text-[10px] text-white/40 uppercase tracking-wider mt-1">Reg. Fee</p>
+                        </div>
+                        <div class="w-px h-10 bg-white/10"></div>
+                        <div class="hero-stat text-center">
+                            <p class="font-orbitron text-xl font-bold text-gradient">1 Apr</p>
+                            <p class="text-[10px] text-white/40 uppercase tracking-wider mt-1">2026</p>
                         </div>
                     </div>
 
@@ -183,8 +212,8 @@
                 <!-- Right: Hero Illustration -->
                 <div class="hero-image relative flex justify-center lg:justify-end opacity-0">
                     <div class="relative w-full max-w-md lg:max-w-lg">
-                        <div class="hero-img-glow absolute inset-0 bg-neon-blue/10 blur-[100px] rounded-full"></div>
-                        <img src="assets/hero.png" alt="AI Neural Network Illustration"
+                        <div class="hero-img-glow absolute inset-0 blur-[100px] rounded-full" style="background:rgba(168,85,247,0.18)"></div>
+                        <img src="assets/hero-purple.png" alt="AIONEX AI Illustration"
                             class="relative z-10 w-full h-auto rounded-3xl floating-animation">
                     </div>
                 </div>
@@ -195,7 +224,7 @@
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 scroll-indicator opacity-0">
             <div class="flex flex-col items-center gap-2 text-white/20">
                 <span class="text-xs tracking-[0.3em] uppercase">Scroll</span>
-                <div class="w-px h-8 bg-gradient-to-b from-white/30 to-transparent scroll-line"></div>
+                <div class="w-px h-8 bg-gradient-to-b from-neon-blue/30 to-transparent scroll-line"></div>
             </div>
         </div>
     </section>
@@ -225,7 +254,7 @@
                     </div>
                     <div class="h-px flex-1 bg-gradient-to-r from-transparent via-neon-blue/30 to-transparent"></div>
                 </div>
-                <div id="technical-events-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div id="technical-events-grid" class="grid md:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8">
                     <!-- Cards injected by JS -->
                 </div>
             </div>
@@ -243,7 +272,7 @@
                     </div>
                     <div class="h-px flex-1 bg-gradient-to-r from-transparent via-neon-purple/30 to-transparent"></div>
                 </div>
-                <div id="non-technical-events-grid" class="grid md:grid-cols-2 gap-6 lg:gap-8">
+                <div id="non-technical-events-grid" class="grid md:grid-cols-3 gap-6 lg:gap-8">
                     <!-- Cards injected by JS -->
                 </div>
             </div>
@@ -255,7 +284,7 @@
                     Register for Events
                     <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </a>
-                <p class="text-white/30 text-sm mt-4">One registration covers all events</p>
+                <p class="text-white/30 text-sm mt-4">Registration Fee: ₹150 · One registration covers all events</p>
             </div>
         </div>
     </section>
@@ -263,7 +292,8 @@
     <!-- ===================== FACULTY SECTION ===================== -->
     <section id="faculty" class="relative py-32 lg:py-40">
         <div
-            class="section-bg-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-neon-purple/5 blur-[200px] rounded-full pointer-events-none">
+            class="section-bg-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] blur-[200px] rounded-full pointer-events-none"
+            style="background:rgba(168,85,247,0.05)">
         </div>
 
         <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
@@ -362,11 +392,10 @@
                 <div class="footer-item opacity-0">
                     <div class="flex items-center gap-3 mb-6">
                         <div
-                            class="w-[75px] h-[75px] rounded-xl bg-gradient-to-br from-neon-blue to-neon-purple flex items-center justify-center font-orbitron font-bold text-sm text-dark-900">
+                            class="w-[75px] h-[75px] rounded-xl bg-gradient-to-br from-neon-pink to-neon-purple flex items-center justify-center font-orbitron font-bold text-sm text-white">
                             ADFYI
                         </div>
-                        <span class="font-orbitron text-lg font-semibold tracking-wider">Artificial Inteligence and Data
-                            Forge young Innovators</span>
+                        <span class="font-orbitron text-base font-semibold tracking-wider">Artificial Intelligence<br>and Data Forge<br>Young Innovators</span>
                     </div>
                     <p class="text-white/40 text-sm leading-relaxed max-w-xs">
                         A national-level technical symposium bringing together the brightest minds in technology and
@@ -393,7 +422,7 @@
                 <div class="footer-item opacity-0">
                     <h3 class="text-sm font-semibold tracking-wider uppercase text-white/60 mb-6">Get In Touch</h3>
                     <div class="flex flex-col gap-3">
-                        <a href="mailto:symposium@college.edu"
+                        <a href="mailto:aionex2k26@gmail.com"
                             class="flex items-center gap-3 text-sm text-white/40 hover:text-neon-cyan transition-colors duration-300">
                             <i data-lucide="mail" class="w-4 h-4"></i>
                             <span>aionex2k26@gmail.com</span>
@@ -405,7 +434,7 @@
                         </a>
                         <div class="flex items-start gap-3 text-sm text-white/40">
                             <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 shrink-0"></i>
-                            <span>Mar Ephraem College of Engineering and Technology, Elavuvilai, Kanyakumari </span>
+                            <span>Mar Ephraem College of Engineering and Technology, Elavuvilai, Kanyakumari</span>
                         </div>
                     </div>
 
@@ -414,10 +443,8 @@
                         <a href="https://www.instagram.com/ai_raptorz?igsh=MWM1azBzMW9nNnlmeA%3D%3D&utm_source=qr"
                             target="_blank"
                             class="social-icon flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 hover:border-neon-blue/50 hover:bg-neon-blue/10 transition-all duration-300">
-
                             <i data-lucide="instagram" class="w-4 h-4 text-white/70"></i>
                             <span class="text-white/70 text-sm">AI Raptorz</span>
-
                         </a>
                     </div>
                 </div>
@@ -427,11 +454,17 @@
             <div
                 class="border-t border-white/5 mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p class="text-xs text-white/30">© 2026 AIONEX 2K26. All rights reserved.</p>
-                <p class="text-xs text-white/20">Department of Artificial Inteligence and Data Science · Mar Ephraem
+                <p class="text-xs text-white/20">Department of Artificial Intelligence and Data Science · Mar Ephraem
                     College of Engineering and Technology</p>
             </div>
         </div>
     </footer>
+
+    <!-- ===================== MOBILE FLOATING REGISTER BUTTON ===================== -->
+    <a href="https://forms.gle/pqtGpZKeccSck1GG6" target="_blank" class="mobile-float-register md:hidden">
+        <i data-lucide="external-link" style="width:16px;height:16px"></i>
+        Register Now
+    </a>
 
     <!-- Scripts -->
     <script src="script.js"></script>
