@@ -9,65 +9,60 @@
 
 const technicalEvents = [
     {
-        name: "Paper Presentation",
-        description: "Present your research on emerging technologies. Share your insights and innovations with an expert panel.\n\nTheme: Artificial Intelligence, Data Science",
+        name: "Techie Talks",
+        description: "Present your groundbreaking ideas and research through a compelling paper presentation",
         icon: "file-text",
         coordinator: { name: "Aswin A", phone: "+91 78458 29455" },
         rules: [
             "<span class='rule-key'>Team:</span> 1–2 participants per team",
-            "<span class='rule-key'>Topic:</span> Must be related to technology or emerging tech",
+            "<span class='rule-key'>Topic:</span> Must be related to technology or emerging technical fields",
             "<span class='rule-key'>Presentation:</span> 5 minutes per team",
-            "<span class='rule-key'>Q&A:</span> 1 minute with judges",
-            "<span class='rule-key'>Submission:</span> Bring PPT in a pen drive or submit PDF during registration",
-            "<span class='rule-key'>Offline:</span> Ensure presentation works without internet",
-            "<span class='rule-key'>File Name:</span> Use participant/team leader name for easy identification"
+            "<span class='rule-key'>Q&A:</span> 1 minute for judges to ask questions after the presentation",
+            "<span class='rule-key'>Submission:</span> Bring presentation on a pen drive or submit PDF during registration to the respective coordinators",
+            "<span class='rule-key'>Offline:</span> Internet access will not be available — ensure presentation works offline",
+            "<span class='rule-key'>File Naming:</span> Save file in the name of the participant or team leader for easy identification"
         ]
     },
     {
-        name: "Debugging",
-        description: "Find and fix bugs in the given code snippets. Test your debugging skills under pressure with tricky code challenges.",
+        name: "Code Conqueror",
+        description: "Conquer coding challenges across 2 intense rounds — a pen & paper logic test followed by a software-based coding battle. Only the best advance!",
         icon: "bug",
         coordinator: { name: "Afzar", phone: "+91 75300 77048" },
         rules: [
             "Do not use mobile phones inside the event hall.",
             "This event is divided into 2 Rounds.",
-            "<span class='rule-key'>Round 1:</span> 30 minutes — Pen and paper based.",
+            "<span class='rule-key'>Round 1 (30 min):</span> Pen and paper based level.",
             "Only winning participants from Round 1 proceed to Round 2.",
-            "<span class='rule-key'>Round 2:</span> 30 minutes — Software based.",
+            "<span class='rule-key'>Round 2 (30 min):</span> Software based level.",
             "The decision of the judges is final."
         ]
     },
     {
-        name: "Prism AI",
-        description: "Craft the perfect prompts to get AI to generate desired outputs. Master the art of prompt engineering.",
-        icon: "sparkles",
+        name: "Aura UI/UX",
+        description: "Design a stunning single-page UI using Figma within 1 hour 10 minutes. LLM tools like ChatGPT and Gemini are allowed — but AI image generation is strictly off limits.",
+        icon: "layout",
         coordinator: { name: "Jothison", phone: "+91 94894 28051" },
         rules: [
-            "<span class='rule-key'>Round 1 — Logo Creation:</span>",
-            "Team: Individual or team of 2",
-            "Task: Write a prompt and generate a logo using AI (e.g., ChatGPT)",
-            "Topic: Given by organizers",
-            "Time: 8 minutes",
-            "Selection: Top scorers qualify for Round 2",
-            "<span class='rule-key'>Round 2 — Scenery Prompt:</span>",
-            "Team: Same participants continue",
-            "Task: Create a prompt using given keywords/characters and generate an image",
-            "Time: 10 minutes",
-            "Evaluation: Based on creativity and accuracy"
+            "<span class='rule-key'>Tools Allowed:</span> Figma editor and LLM models (ChatGPT, Gemini, etc.) for assistance",
+            "<span class='rule-key'>Team Size:</span> 2 members per team",
+            "<span class='rule-key'>Time Limit:</span> 1 hour 10 minutes",
+            "<span class='rule-key'>Task:</span> A description and requirements will be provided at the venue — design the UI based on them",
+            "<span class='rule-key'>AI Restriction:</span> Strictly forbidden to use AI for image generation",
+            "<span class='rule-key'>Design Scope:</span> Submission must be a single-page UI design",
+            "<span class='rule-key'>Image Usage:</span> May download images from any website, but image generation tools are not allowed"
         ]
     },
     {
-        name: "Technical Quiz",
-        description: "Test your knowledge on technology, programming, AI, and current trends in the tech world.",
+        name: "Brainy Blitz",
+        description: "Battle through 2 rounds of technical engineering questions and rapid fire challenges. Only top scorers advance — no phones, no help, just brains.",
         icon: "brain",
         coordinator: { name: "Sreejith", phone: "+91 77086 56064" },
         rules: [
             "Participants must arrive on time and register before the event starts.",
-            "Teams will consist of 2 members each.",
+            "<span class='rule-key'>Team:</span> 2 members per team",
             "The quiz will be conducted in two rounds:",
-            "<span class='rule-key'>Round 1:</span> Technical questions related to Engineering",
-            "<span class='rule-key'>Round 2:</span> Rapid fire",
-            "30 seconds will be given for each question.",
+            "<span class='rule-key'>Round 1:</span> Technical questions related to Engineering — 30 seconds per question",
+            "<span class='rule-key'>Round 2:</span> Rapid fire — 15 seconds per question",
             "Top scoring students qualify for the next round.",
             "No use of mobile phones or any external help during the quiz."
         ]
@@ -92,35 +87,42 @@ const nonTechnicalEvents = [
         ]
     },
     {
-        name: "Connection Puzzle",
-        description: "Find the hidden connections between seemingly unrelated clues. A brain-teasing puzzle that tests your lateral thinking.",
+        name: "Connexion",
+        description: "Find hidden connections between clues and crack visual puzzles as a team. Raise your hand, answer fast, and climb to the top of the leaderboard!",
         icon: "puzzle",
         coordinator: { name: "Godson Lalu", phone: "+91 63691 20813" },
         rules: [
             "<span class='rule-key'>Round 1 — Connections:</span>",
             "Team: 2 members per team",
-            "Questions: 10 questions displayed",
-            "Answering: Raise hand; first recognized team answers",
-            "Rule: No shouting answers",
+            "10 questions displayed on screen",
+            "Raise hand to answer — first team recognized by the quiz master gets the chance",
+            "Participants must not shout the answers",
             "Scoring: +10 (correct), −5 (wrong)",
-            "Selection: Top teams qualify for next round",
+            "Top scoring teams qualify for the next round",
             "<span class='rule-key'>Round 2 — Puzzles:</span>",
-            "Task: Solve puzzle questions displayed on screen",
-            "Answering: Raise hand; first recognized team answers",
-            "Rule: No shouting answers",
+            "Puzzle questions displayed on screen",
+            "Raise hand — first recognized team answers",
+            "Participants must not shout the answers",
             "Scoring: +10 (correct)"
         ]
     },
     {
-        name: "Who Am I",
-        description: "Guess the personality from clues given one at a time. The fewer clues you need, the more points you score!",
-        icon: "user-search",
+        name: "Logiq Hunt",
+        description: "Test your brand recognition across 4 thrilling rounds — guess blurred images, identify logos, match taglines, and survive the rapid fire finale!",
+        icon: "search",
         coordinator: { name: "Aswin Raj", phone: "+91 88075 11051" },
         rules: [
-            "Individual participation",
-            "Clues revealed one by one",
-            "Points decrease with each clue used",
-            "Covers tech leaders, scientists, and pop culture"
+            "<span class='rule-key'>Team:</span> 3 members per team",
+            "Participants must register before the event starts and report on time.",
+            "Late entries will not be allowed after the event begins.",
+            "Use of mobile phones or any electronic gadgets is strictly prohibited.",
+            "Any form of malpractice or cheating will lead to disqualification.",
+            "<span class='rule-key'>Round 1:</span> Guess the Blurred Image",
+            "<span class='rule-key'>Round 2:</span> Choose the Correct Logo",
+            "<span class='rule-key'>Round 3:</span> Tagline Round",
+            "<span class='rule-key'>Round 4:</span> Rapid Fire Round",
+            "Only top-scoring teams from each round qualify for the next stage.",
+            "The final winner will be decided based on overall performance."
         ]
     }
 ];
@@ -178,7 +180,7 @@ const facultyCategories = {
         {
             name: "Mrs. Ajitha M",
             designation: "Assistant Professor",
-            role: "Prompt Coordinator",
+            role: "Aura UI/UX Coordinator",
             image: "assets/ajitha.png"
         },
         {
