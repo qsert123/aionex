@@ -201,6 +201,26 @@ const facultyCategories = {
             role: "",
             image: "assets/jino.png"
         },
+        {
+            name: "Shobhana S",
+            designation: "Assistant Professor",
+            role: "",
+            image: "assets/shobhana.jpg"
+        }
+    ],
+    studentcoordinators: [
+        {
+            name: "Ashin J",
+            designation: "Student Coordinator",
+            role: "",
+            image: "assets/ashin.jpg"
+        },
+        {
+            name: "Arshek John J D",
+            designation: "Student Coordinator",
+            role: "",
+            image: "assets/arshekh.jpg"
+        }
     ]
 };
 
@@ -323,7 +343,7 @@ function renderFacultyCard(faculty, featured = false) {
 
     return `
         <div class="${cardClass}" data-animate="faculty">
-            <img src="${faculty.image}" alt="${faculty.name}" class="${imgClass}" loading="lazy">
+            <img src="${faculty.image}" alt="${faculty.name}" class="${imgClass}" loading="lazy" style="object-position:center top">
             <h3 class="font-space text-lg font-semibold text-white mb-1">${faculty.name}</h3>
             <p class="text-xs font-medium tracking-wide uppercase mb-2" style="color:#c084fc">${faculty.designation}</p>
             ${roleHtml}
@@ -337,6 +357,7 @@ function renderFaculty() {
     const eventGrid = document.getElementById('faculty-event');
     const coordGrid = document.getElementById('faculty-coordinators');
     const staffGrid = document.getElementById('faculty-staff');
+    const studentCoordGrid = document.getElementById('faculty-student-coordinators');
 
     if (hodGrid) {
         hodGrid.innerHTML = facultyCategories.hod.map(f => renderFacultyCard(f, true)).join('');
@@ -352,6 +373,9 @@ function renderFaculty() {
     }
     if (staffGrid) {
         staffGrid.innerHTML = facultyCategories.staff.map(f => renderFacultyCard(f)).join('');
+    }
+    if (studentCoordGrid && facultyCategories.studentcoordinators) {
+        studentCoordGrid.innerHTML = facultyCategories.studentcoordinators.map(f => renderFacultyCard(f)).join('');
     }
 }
 
@@ -398,7 +422,7 @@ function initParticles() {
 
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(192, 132, 252, ${p.opacity})`;
+            ctx.fillStyle = `rgba(${getParticleColor()}, ${p.opacity})`;
             ctx.fill();
 
             // Draw connections
@@ -411,7 +435,7 @@ function initParticles() {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(192, 132, 252, ${0.04 * (1 - dist / 120)})`;
+                    ctx.strokeStyle = `rgba(${getParticleColor()}, ${0.04 * (1 - dist / 120)})`;
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
@@ -429,6 +453,51 @@ function initParticles() {
         resize();
         createParticles();
     });
+}
+
+// ─────────────────────────────────────────
+// THEME TOGGLE: Light / Dark
+// ─────────────────────────────────────────
+
+function getParticleColor() {
+    const style = getComputedStyle(document.documentElement);
+    return style.getPropertyValue('--particle-color').trim() || '192, 132, 252';
+}
+
+function initThemeToggle() {
+    const html = document.documentElement;
+    const saved = localStorage.getItem('aionex-theme');
+    if (saved) {
+        html.setAttribute('data-theme', saved);
+    }
+
+    function updateIcons() {
+        const isDark = html.getAttribute('data-theme') !== 'light';
+        document.querySelectorAll('.theme-icon-dark').forEach(el => {
+            el.style.display = isDark ? 'block' : 'none';
+        });
+        document.querySelectorAll('.theme-icon-light').forEach(el => {
+            el.style.display = isDark ? 'none' : 'block';
+        });
+    }
+
+    function toggle() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('aionex-theme', next);
+        document.body.style.backgroundColor = getComputedStyle(html).getPropertyValue('--bg-body').trim();
+        updateIcons();
+        lucide.createIcons();
+    }
+
+    document.querySelectorAll('#theme-toggle, #theme-toggle-mobile').forEach(btn => {
+        btn.addEventListener('click', toggle);
+    });
+
+    // Apply saved theme on load
+    updateIcons();
+    document.body.style.backgroundColor = getComputedStyle(html).getPropertyValue('--bg-body').trim();
 }
 
 // ─────────────────────────────────────────
@@ -475,39 +544,54 @@ function initNavbar() {
 function initAnimations() {
     gsap.registerPlugin(ScrollTrigger);
 
-    // ── Hero Animations ──
-    const heroTl = gsap.timeline({ delay: 0.3 });
+    // ── Liquid Glass Hero Animations (spring physics feel) ──
+    const heroTl = gsap.timeline({ delay: 0.2 });
+
+    // Set initial states with slight blur for glassy reveal
+    gsap.set('.hero-badge', { filter: 'blur(8px)' });
+    gsap.set('.hero-title', { filter: 'blur(12px)' });
+    gsap.set('.hero-tagline', { filter: 'blur(6px)' });
+    gsap.set('.hero-details', { filter: 'blur(4px)' });
+    gsap.set('.hero-buttons', { filter: 'blur(6px)' });
+    gsap.set('.hero-image', { filter: 'blur(16px)' });
 
     heroTl
         .to('.hero-badge', {
-            opacity: 1, y: 0, duration: 0.8, ease: 'power3.out'
+            opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9,
+            ease: 'back.out(1.7)'
         })
         .to('.hero-title', {
-            opacity: 1, y: 0, duration: 0.9, ease: 'power3.out'
-        }, '-=0.5')
+            opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.0,
+            ease: 'back.out(1.4)'
+        }, '-=0.55')
         .to('.hero-tagline', {
-            opacity: 1, y: 0, duration: 0.7, ease: 'power3.out'
-        }, '-=0.5')
+            opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.75,
+            ease: 'power4.out'
+        }, '-=0.55')
         .to('.hero-details', {
-            opacity: 1, y: 0, duration: 0.6, ease: 'power3.out'
-        }, '-=0.4')
+            opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.65,
+            ease: 'power3.out'
+        }, '-=0.45')
         .to('.hero-buttons', {
-            opacity: 1, y: 0, duration: 0.7, ease: 'power3.out'
-        }, '-=0.3')
+            opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.75,
+            ease: 'back.out(1.5)'
+        }, '-=0.4')
         .to('.hero-image', {
-            opacity: 1, x: 0, duration: 1, ease: 'power3.out'
-        }, '-=0.6')
+            opacity: 1, x: 0, filter: 'blur(0px)', duration: 1.1,
+            ease: 'back.out(1.2)'
+        }, '-=0.65')
         .to('.scroll-indicator', {
-            opacity: 1, duration: 0.5, ease: 'power2.out'
-        }, '-=0.2');
+            opacity: 1, duration: 0.6, ease: 'power2.out'
+        }, '-=0.3');
 
     // Set initial positions
-    gsap.set('.hero-badge', { y: 20 });
-    gsap.set('.hero-title', { y: 30 });
-    gsap.set('.hero-tagline', { y: 20 });
-    gsap.set('.hero-details', { y: 20 });
-    gsap.set('.hero-buttons', { y: 20 });
-    gsap.set('.hero-image', { x: 40 });
+    gsap.set('.hero-badge', { y: 24, opacity: 0 });
+    gsap.set('.hero-title', { y: 36, opacity: 0 });
+    gsap.set('.hero-tagline', { y: 22, opacity: 0 });
+    gsap.set('.hero-details', { y: 18, opacity: 0 });
+    gsap.set('.hero-buttons', { y: 22, opacity: 0 });
+    gsap.set('.hero-image', { x: 48, opacity: 0 });
+    gsap.set('.scroll-indicator', { opacity: 0 });
 
     // ── Events Section ──
     gsap.to('.event-label', {
@@ -528,37 +612,38 @@ function initAnimations() {
     });
     gsap.set('.event-title', { y: 20 });
 
-    // Tech separator
-    gsap.to('.tech-separator', {
-        scrollTrigger: {
-            trigger: '.tech-separator',
-            start: 'top 85%',
-        },
-        opacity: 1, duration: 0.7, ease: 'power2.out'
-    });
+    // Tech separator — liquid glass reveal
+    gsap.fromTo('.tech-separator',
+        { opacity: 0, scaleX: 0.85, filter: 'blur(8px)' },
+        {
+            scrollTrigger: { trigger: '.tech-separator', start: 'top 85%' },
+            opacity: 1, scaleX: 1, filter: 'blur(0px)',
+            duration: 0.9, ease: 'back.out(1.6)'
+        }
+    );
 
     // Non-tech separator
-    gsap.to('.nontech-separator', {
-        scrollTrigger: {
-            trigger: '.nontech-separator',
-            start: 'top 85%',
-        },
-        opacity: 1, duration: 0.7, ease: 'power2.out'
-    });
+    gsap.fromTo('.nontech-separator',
+        { opacity: 0, scaleX: 0.85, filter: 'blur(8px)' },
+        {
+            scrollTrigger: { trigger: '.nontech-separator', start: 'top 85%' },
+            opacity: 1, scaleX: 1, filter: 'blur(0px)',
+            duration: 0.9, ease: 'back.out(1.6)'
+        }
+    );
 
-    // Stagger event cards
+    // Stagger event cards — glass drop-in with spring
     gsap.utils.toArray('[data-animate="event"]').forEach((card, i) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 88%',
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.7,
-            delay: (i % 3) * 0.12,
-            ease: 'power3.out'
-        });
+        gsap.fromTo(card,
+            { opacity: 0, y: 50, scale: 0.94, filter: 'blur(10px)' },
+            {
+                scrollTrigger: { trigger: card, start: 'top 89%' },
+                opacity: 1, y: 0, scale: 1, filter: 'blur(0px)',
+                duration: 0.85,
+                delay: (i % 4) * 0.09,
+                ease: 'back.out(1.4)'
+            }
+        );
     });
 
     // ── Faculty Section ──
@@ -580,42 +665,43 @@ function initAnimations() {
     });
     gsap.set('.faculty-title', { y: 20 });
 
-    // Faculty category separators
+    // Faculty category separators — liquid reveal
     gsap.utils.toArray('.faculty-separator').forEach((sep) => {
-        gsap.to(sep, {
-            scrollTrigger: {
-                trigger: sep,
-                start: 'top 85%',
-            },
-            opacity: 1, duration: 0.7, ease: 'power2.out'
-        });
+        gsap.fromTo(sep,
+            { opacity: 0, x: -20, filter: 'blur(6px)' },
+            {
+                scrollTrigger: { trigger: sep, start: 'top 86%' },
+                opacity: 1, x: 0, filter: 'blur(0px)',
+                duration: 0.8, ease: 'back.out(1.5)'
+            }
+        );
     });
 
-    // Stagger faculty cards
+    // Stagger faculty cards — glass drop spring
     gsap.utils.toArray('[data-animate="faculty"]').forEach((card, i) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 88%',
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.7,
-            delay: i * 0.1,
-            ease: 'power3.out'
-        });
+        gsap.fromTo(card,
+            { opacity: 0, y: 44, scale: 0.93, filter: 'blur(10px)' },
+            {
+                scrollTrigger: { trigger: card, start: 'top 89%' },
+                opacity: 1, y: 0, scale: 1, filter: 'blur(0px)',
+                duration: 0.8,
+                delay: i * 0.08,
+                ease: 'back.out(1.5)'
+            }
+        );
     });
 
-    // ── Footer ──
+    // ── Footer — glass fade up ──
     gsap.utils.toArray('.footer-item').forEach((item, i) => {
-        gsap.to(item, {
-            scrollTrigger: {
-                trigger: item,
-                start: 'top 90%',
-            },
-            opacity: 1, y: 0, duration: 0.6, delay: i * 0.1, ease: 'power3.out'
-        });
-        gsap.set(item, { y: 20 });
+        gsap.fromTo(item,
+            { opacity: 0, y: 28, filter: 'blur(6px)' },
+            {
+                scrollTrigger: { trigger: item, start: 'top 91%' },
+                opacity: 1, y: 0, filter: 'blur(0px)',
+                duration: 0.7, delay: i * 0.1,
+                ease: 'back.out(1.4)'
+            }
+        );
     });
 }
 
@@ -632,6 +718,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
 
     // Initialize features
+    initThemeToggle();
     initParticles();
     initNavbar();
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="overflow-x:hidden">
+<html lang="en" data-theme="dark" style="overflow-x:hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -34,10 +34,10 @@
                             600: '#1a0033',
                         },
                         neon: {
-                            blue:   '#c084fc',
+                            blue: '#c084fc',
                             purple: '#e879f9',
-                            cyan:   '#f0abfc',
-                            pink:   '#a855f7',
+                            cyan: '#f0abfc',
+                            pink: '#a855f7',
                         }
                     }
                 }
@@ -56,7 +56,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-dark-900 text-white font-inter antialiased overflow-x-hidden" style="background-color:#060010">
+<body class="bg-dark-900 text-white font-inter antialiased overflow-x-hidden" style="background-color:#07001a">
 
     <!-- ===================== NAVBAR ===================== -->
     <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 overflow-x-hidden">
@@ -84,7 +84,11 @@
                 </div>
 
                 <!-- Register CTA -->
-                <div class="hidden md:block">
+                <div class="hidden md:flex items-center gap-3">
+                    <button id="theme-toggle" class="theme-toggle-btn p-2.5 rounded-full transition-all duration-300" aria-label="Toggle theme">
+                        <i data-lucide="moon" class="w-4 h-4 theme-icon-dark"></i>
+                        <i data-lucide="sun" class="w-4 h-4 theme-icon-light hidden"></i>
+                    </button>
                     <a href="https://forms.gle/pqtGpZKeccSck1GG6" target="_blank"
                         class="register-btn px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all duration-300">
                         Register Now
@@ -105,7 +109,7 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden mobile-menu-closed overflow-hidden transition-all duration-500"
-            style="background:rgba(6,0,16,0.92);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(192,132,252,0.08);">
+            style="background:rgba(7,0,26,0.94);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border-bottom:1px solid rgba(192,132,252,0.10);">
             <div class="px-6 pb-6 pt-2 border-t border-white/5">
                 <div class="flex flex-col gap-4">
                     <a href="#home"
@@ -119,6 +123,10 @@
                     <a href="https://forms.gle/pqtGpZKeccSck1GG6" target="_blank"
                         class="register-btn text-center px-6 py-3 rounded-full text-sm font-semibold tracking-wide mt-2 transition-all duration-300">Register
                         Now</a>
+                    <button id="theme-toggle-mobile" class="theme-toggle-btn p-2.5 rounded-full transition-all duration-300 self-start mt-1" aria-label="Toggle theme">
+                        <i data-lucide="moon" class="w-4 h-4 theme-icon-dark"></i>
+                        <i data-lucide="sun" class="w-4 h-4 theme-icon-light hidden"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -132,8 +140,11 @@
         <canvas id="particles-canvas" class="absolute inset-0 z-0"></canvas>
 
         <!-- Glow orbs -->
-        <div class="absolute top-1/4 left-1/4 w-72 h-72 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(126,34,206,0.18) 0%,transparent 70%);filter:blur(40px)"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(232,121,249,0.12) 0%,transparent 70%);filter:blur(60px)"></div>
+        <div class="absolute top-1/4 left-1/4 w-72 h-72 rounded-full pointer-events-none"
+            style="background:radial-gradient(circle,rgba(126,34,206,0.18) 0%,transparent 70%);filter:blur(40px)"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none"
+            style="background:radial-gradient(circle,rgba(232,121,249,0.12) 0%,transparent 70%);filter:blur(60px)">
+        </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-24">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -148,7 +159,8 @@
                     </div>
 
                     <!-- Department tag -->
-                    <p class="text-white/30 text-xs tracking-widest uppercase mb-3 font-medium" style="letter-spacing:0.15em">
+                    <p class="text-white/30 text-xs tracking-widest uppercase mb-3 font-medium"
+                        style="letter-spacing:0.15em">
                         Department of AI &amp; Data Science
                     </p>
 
@@ -179,7 +191,7 @@
                     </div>
 
                     <!-- Stats row -->
-                    <div class="flex items-center gap-6 mb-10" style="opacity:0.7">
+                    <div class="flex items-center gap-6 mb-10" style="opacity:0.65">
                         <div class="hero-stat text-center">
                             <p class="font-orbitron text-xl font-bold text-gradient">7+</p>
                             <p class="text-[10px] text-white/40 uppercase tracking-wider mt-1">Events</p>
@@ -212,8 +224,9 @@
                 <!-- Right: Hero Illustration -->
                 <div class="hero-image relative flex justify-center lg:justify-end opacity-0">
                     <div class="relative w-full max-w-md lg:max-w-lg">
-                        <div class="hero-img-glow absolute inset-0 blur-[100px] rounded-full" style="background:rgba(168,85,247,0.18)"></div>
-                        <img src="assets/hero-purple.png" alt="AIONEX AI Illustration"
+                        <div class="hero-img-glow absolute inset-0 blur-[100px] rounded-full"
+                            style="background:rgba(168,85,247,0.2)"></div>
+                        <img src="assets/hero-national.png" alt="AIONEX National Level Symposium Illustration"
                             class="relative z-10 w-full h-auto rounded-3xl floating-animation">
                     </div>
                 </div>
@@ -291,8 +304,7 @@
 
     <!-- ===================== FACULTY SECTION ===================== -->
     <section id="faculty" class="relative py-32 lg:py-40">
-        <div
-            class="section-bg-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] blur-[200px] rounded-full pointer-events-none"
+        <div class="section-bg-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] blur-[200px] rounded-full pointer-events-none"
             style="background:rgba(168,85,247,0.05)">
         </div>
 
@@ -350,8 +362,8 @@
             </div>
 
             <!-- Event Coordinators -->
-            <div class="mb-20">
-                <div class="flex items-center gap-4 mb-12 faculty-separator opacity-0">
+            <div class="mb-20 mx-auto">
+                <div class="flex items-center gap-4 mb-12 faculty-separator opacity-0 ">
                     <div class="h-px flex-1 bg-gradient-to-r from-transparent via-neon-cyan/30 to-transparent"></div>
                     <div
                         class="flex items-center gap-3 px-6 py-2 rounded-full border border-neon-cyan/20 bg-neon-cyan/5">
@@ -361,7 +373,7 @@
                     </div>
                     <div class="h-px flex-1 bg-gradient-to-r from-transparent via-neon-cyan/30 to-transparent"></div>
                 </div>
-                <div id="faculty-coordinators" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div id="faculty-coordinators" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
                     <!-- Coordinator cards injected by JS -->
                 </div>
             </div>
@@ -377,8 +389,25 @@
                     </div>
                     <div class="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
                 </div>
-                <div id="faculty-staff" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div id="faculty-staff" class="grid sm:grid-cols-2 gap-6 lg:gap-8 max-w-xl mx-auto">
                     <!-- Staff cards injected by JS -->
+                </div>
+            </div>
+
+            <!-- Student Coordinators -->
+            <div class="mt-20">
+                <div class="flex items-center gap-4 mb-12 faculty-separator opacity-0">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-neon-blue/30 to-transparent"></div>
+                    <div
+                        class="flex items-center gap-3 px-6 py-2 rounded-full border border-neon-blue/20 bg-neon-blue/5">
+                        <i data-lucide="graduation-cap" class="w-4 h-4 text-neon-blue"></i>
+                        <span class="text-sm font-semibold text-neon-blue tracking-wider uppercase font-space">Student
+                            Coordinators</span>
+                    </div>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-neon-blue/30 to-transparent"></div>
+                </div>
+                <div id="faculty-student-coordinators" class="grid sm:grid-cols-2 gap-6 lg:gap-8 max-w-xl mx-auto">
+                    <!-- Student coordinator cards injected by JS -->
                 </div>
             </div>
         </div>
@@ -395,7 +424,8 @@
                             class="w-[75px] h-[75px] rounded-xl bg-gradient-to-br from-neon-pink to-neon-purple flex items-center justify-center font-orbitron font-bold text-sm text-white">
                             ADFYI
                         </div>
-                        <span class="font-orbitron text-base font-semibold tracking-wider">Artificial Intelligence<br>and Data Forge<br>Young Innovators</span>
+                        <span class="font-orbitron text-base font-semibold tracking-wider">Artificial
+                            Intelligence<br>and Data Forge<br>Young Innovators</span>
                     </div>
                     <p class="text-white/40 text-sm leading-relaxed max-w-xs">
                         A national-level technical symposium bringing together the brightest minds in technology and
@@ -461,7 +491,7 @@
     </footer>
 
     <!-- ===================== MOBILE FLOATING REGISTER BUTTON ===================== -->
-    <a href="https://forms.gle/pqtGpZKeccSck1GG6" target="_blank" class="mobile-float-register md:hidden">
+    <a href="https://forms.gle/pqtGpZKeccSck1GG6" target="_blank" class="mobile-float-register md:hidden no-underline" style="text-decoration:none">
         <i data-lucide="external-link" style="width:16px;height:16px"></i>
         Register Now
     </a>
