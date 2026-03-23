@@ -31,9 +31,11 @@ const technicalEvents = [
         rules: [
             "Do not use mobile phones inside the event hall.",
             "This event is divided into 2 Rounds.",
-            "<span class='rule-key'>Round 1 (30 min):</span> Pen and paper based level.",
+            "<span class='rule-key'>Round 1:</span> Takes half an hour.",
+            "<span class='rule-key'>Round 1:</span> Pen and paper based level.",
             "Only winning participants from Round 1 proceed to Round 2.",
-            "<span class='rule-key'>Round 2 (30 min):</span> Software based level.",
+            "<span class='rule-key'>Round 2:</span> Takes half an hour.",
+            "<span class='rule-key'>Round 2:</span> Software based level.",
             "The decision of the judges is final."
         ]
     },
@@ -76,6 +78,7 @@ const nonTechnicalEvents = [
         icon: "music",
         coordinator: { name: "Aginson", phone: "+91 73958 87298" },
         rules: [
+            "Participants must arrive on time and register before the event starts.",
             "Team: 2 members per team",
             "<span class='rule-key'>Round 1:</span> 20 questions — Top 10 teams qualify",
             "<span class='rule-key'>Round 2:</span> 15 questions — Top 2 teams qualify",
@@ -112,7 +115,7 @@ const nonTechnicalEvents = [
         icon: "search",
         coordinator: { name: "Aswin Raj", phone: "+91 88075 11051" },
         rules: [
-            "<span class='rule-key'>Team:</span> 3 members per team",
+            "<span class='rule-key'>Team:</span> 2 members per team",
             "Participants must register before the event starts and report on time.",
             "Late entries will not be allowed after the event begins.",
             "Use of mobile phones or any electronic gadgets is strictly prohibited.",
