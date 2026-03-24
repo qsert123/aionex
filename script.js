@@ -25,7 +25,7 @@ const technicalEvents = [
     },
     {
         name: "Code Conqueror",
-        description: "Conquer coding challenges across 2 intense rounds — a pen & paper logic test followed by a software-based coding battle. Only the best advance!",
+        description: "Conquer coding challenges across 2 intense rounds — a pen & paper logic test. Only the best advance!",
         icon: "bug",
         coordinator: { name: "Afzar", phone: "+91 75300 77048" },
         rules: [
@@ -61,7 +61,6 @@ const technicalEvents = [
         coordinator: { name: "Sreejith", phone: "+91 77086 56064" },
         rules: [
             "Participants must arrive on time and register before the event starts.",
-            "<span class='rule-key'>Team:</span> 2 members per team",
             "The quiz will be conducted in two rounds:",
             "<span class='rule-key'>Round 1:</span> Technical questions related to Engineering — 30 seconds per question",
             "<span class='rule-key'>Round 2:</span> Rapid fire — 15 seconds per question",
@@ -116,7 +115,6 @@ const nonTechnicalEvents = [
         coordinator: { name: "Aswin Raj", phone: "+91 88075 11051" },
         rules: [
             "<span class='rule-key'>Team:</span> 2 members per team",
-            "Participants must register before the event starts and report on time.",
             "Late entries will not be allowed after the event begins.",
             "Use of mobile phones or any electronic gadgets is strictly prohibited.",
             "Any form of malpractice or cheating will lead to disqualification.",
@@ -151,7 +149,7 @@ const facultyCategories = {
         {
             name: "Mrs. Ashlin Femi R N",
             designation: "Assistant Professor",
-            role: "Event Coordinator",
+            role: "",
             image: "assets/ashlin.png"
         },
     ],
@@ -159,43 +157,43 @@ const facultyCategories = {
         {
             name: "Mrs. Antush Fredian A",
             designation: "Assistant Professor",
-            role: "Paper Presentation Coordinator",
+            role: "Techie Talks(Paper Presentation)",
             image: "assets/ANTUSH_FREDINA.png"
         },
         {
             name: "Ms. Jeffe Libi Shiny J",
             designation: "Assistant Professor",
-            role: "Debugging Coordinator",
+            role: "Code Conqueror(code Debugging)",
             image: "assets/jeffe.png"
         },
         {
             name: "Mrs. Reshma B Viswan",
             designation: "Assistant Professor",
-            role: "Who Am I Coordinator",
+            role: "LOGIQ HUNT(Logo Finding)",
             image: "assets/reshma.png"
         },
         {
             name: "Mrs. Jasmin Reeda R",
             designation: "Assistant Professor",
-            role: "Tech Quiz Coordinator",
+            role: "Brainy Blitz(Quiz)",
             image: "assets/jasmin.png"
         },
         {
             name: "Mrs. Ajitha M",
             designation: "Assistant Professor",
-            role: "Aura UI/UX Coordinator",
+            role: "Aura UI/UX(UI/UX Designing)",
             image: "assets/ajitha.png"
         },
         {
             name: "Mrs. Merlin Sheeba",
             designation: "Assistant Professor",
-            role: "Connection Puzzle Coordinator",
+            role: "Connexion(Connection Puzzle)",
             image: "assets/merlin.jpg"
         },
         {
             name: "Mr. Ramesh",
             designation: "Assistant Professor",
-            role: "Spotify Coordinator",
+            role: "Spotify(Song Guessing)",
             image: "assets/def-ava.avif"
         }
     ],
